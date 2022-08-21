@@ -37,6 +37,7 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
 	//utils.ParseBody(r, CreateBook)
+	// https://stackoverflow.com/questions/15672556/handling-json-post-request-in-go
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(CreateBook)
 	if err != nil {
