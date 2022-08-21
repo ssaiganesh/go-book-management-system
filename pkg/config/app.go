@@ -16,7 +16,7 @@ func Connect() {
 		Passwd:               "",
 		Net:                  "tcp",
 		Addr:                 "127.0.0.1:3306",
-		DBName:               "testdb",
+		DBName:               "bookstore_db",
 		AllowNativePasswords: true,
 	}
 	d, err := gorm.Open("mysql", cfg.FormatDSN())
