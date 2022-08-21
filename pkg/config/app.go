@@ -1,23 +1,32 @@
 package config
 
 import (
+	"github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var (
-	db * gorm.DB
+	db *gorm.DB
 )
 
-func Connect(){
-	d, err := gorm.Open("mysql", "root:@tcp(127.0.0.1:3306)/bookstore_db?charset=utf8&parseTime=True&loc=Local")
-	if err != nil{
+func Connect() {
+	cfg := mysql.Config{
+		User:                 "root",
+		Passwd:               "",
+		Net:                  "tcp",
+		Addr:                 "127.0.0.1:3306",
+		DBName:               "bookstore_db",
+		AllowNativePasswords: true,
+		ParseTime:            true,
+	}
+	d, err := gorm.Open("mysql", cfg.FormatDSN())
+	if err != nil {
 		panic(any(err))
 	}
 	db = d
 }
 
-
-func GetDB() *gorm.DB{
+func GetDB() *gorm.DB {
 	return db
 }
