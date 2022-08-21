@@ -18,6 +18,7 @@ func Connect() {
 		Addr:                 "127.0.0.1:3306",
 		DBName:               "bookstore_db",
 		AllowNativePasswords: true,
+		ParseTime:            true,
 	}
 	d, err := gorm.Open("mysql", cfg.FormatDSN())
 	if err != nil {
