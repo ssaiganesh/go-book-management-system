@@ -8,7 +8,7 @@ import (
 )
 
 func viperEnvVariable(key string) string {
-	viper.SetConfigFile("../.env")
+	viper.SetConfigFile("/Users/shankar.ganesh/go/src/github.com/ssaiganesh/go-book-management-system/.env")
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Fatalf("Error while reading config file %s", err)
